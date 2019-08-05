@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component, Fragment, Suspense} from 'react';
+import {Router,Route} from 'react-router-dom'
+import history from './history/history'
+import Dashboard from "./pages/Dashboard/Dashboard";
+import SoldBooks from './pages/SoldBooks/SoldBooks'
+import Login from './pages/Login/Login'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+
+    }
+
+
+
+    render() {
+        return (
+        <Fragment>
+            <Router history={history}>
+                  <div className="wrapper">
+                    <Route path="/" exact  component={Login}></Route>
+                    <Route path="/Anasayfa" exact  component={Dashboard}></Route>
+                      <Route path="/SatilanKitaplar" exact  component={SoldBooks}></Route>
+                </div>
+            </Router>
+        </Fragment>
+            /*
+            *
+            *
+            * */
+        /*    <BrowserRouter>
+
+                {
+                    this.state.islogin ? (<div className="wrapper">
+                        <Header/>
+                        <Sidebar/>
+                        <div className="main-panel">
+                            <div className="content">
+                                <MainPanel/>
+                                <Route path="/Dashboard" exact  component={Dashboard}></Route>
+                            </div>
+                            <Footer/>
+
+                        </div>
+                    </div>) : <Login/>
+                }
+            </BrowserRouter>*/
+        )
+
+    }
+
+
 }
 
-export default App;
+export  default  App

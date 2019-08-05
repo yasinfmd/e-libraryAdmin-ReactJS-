@@ -10,6 +10,20 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <script src="%PUBLIC_URL%/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: {"families":["Lato:300,400,700,900"]},
+        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+        active: function() {
+          sessionStorage.fonts = true;
+        }
+      });
+    </script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/atlantis.min.css">
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -34,5 +48,18 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="%PUBLIC_URL%/assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/core/popper.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+
+    <script src="%PUBLIC_URL%/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="%PUBLIC_URL%/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <script src="%PUBLIC_URL%/assets/js/atlantis.min.js"></script>
   </body>
 </html>
