@@ -1,15 +1,9 @@
 import  React,{Component,Fragment} from  'react'
-
 import IstatisticCard from  '../../components/IstatisticCard/IstatisticCard'
+import propsType from "prop-types";
 class IstatisticsCards extends Component{
     constructor(props) {
         super(props);
-        //
-        //
-        //icon-big text-center icon-primary bubble-shadow-small
-        //title
-
-        //info
         this.state={
             IstatisticCardData:[{
                 subicon:"flaticon-users",
@@ -31,11 +25,15 @@ class IstatisticsCards extends Component{
             <Fragment>
             <h4 className="page-title">{this.props.title}</h4>
             <div className="row">
-                <IstatisticCard  IstatisticCardData={this.state.IstatisticCardData} />
+                <IstatisticCard  IstatisticCardData={this.props.cardData} />
             </div>
             </Fragment>
         )
     }
 
 }
+IstatisticsCards.propTypes = {
+title:propsType.string,
+ cardData:propsType.array
+};
 export  default  IstatisticsCards

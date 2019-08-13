@@ -14,15 +14,22 @@ export const onLogin = (username, pass) => {
                             payload: res.data
                         }
                     )
-                    history.push("/Anasayfa")
                 }else{
-                    dispatch(
-                        {
-                            type: "loginError",
-                            payload: res
-                        }
-                    )
-                    history.push("/")
+                    if(res!==""){
+                        dispatch(
+                            {
+                                type: "loginError",
+                                payload: res.status
+                            }
+                        )
+                    }else{
+                        dispatch(
+                            {
+                                type: "allBookErr",
+                                payload: "500"
+                            }
+                        )
+                    }
                 }
         })
     }

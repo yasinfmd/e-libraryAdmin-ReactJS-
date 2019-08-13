@@ -15,11 +15,11 @@ var WSProvider = {
                     if (result) {
                         resolve(result)
                     } else {
-                        resolve()
+                        resolve("")
                     }
                 },
                 error: function(request) {
-                    console.log(request)
+                    resolve("")
                 }
             })
         })

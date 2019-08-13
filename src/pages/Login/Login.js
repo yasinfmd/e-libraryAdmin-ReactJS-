@@ -89,9 +89,14 @@ class Login extends Component {
         })
     }
     componentWillReceiveProps( nextProps ){
-        if(this.props.loginData.Login.err==401){
+        debugger
+        console.log(nextProps)
+    if(this.props.loginData.islogin===true){
+        this.props.history.push('/Anasayfa');
+    }
+    else if(this.props.loginData.err==401){
             Plugin.showalert("Kullanıcı Adı Veya Parola Hatalı","error","Tamam")
-        }else if(this.props.loginData.Login.err==500){
+        }else if(this.props.loginData.err==500){
             Plugin.showalert("Sunucuda Hata Gerçekleşti","error","Tamam")
         }
     }
@@ -146,9 +151,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger
     return {
-        loginData: state,
+        loginData: state.Login,
     }
 }
 export default connect(mapStateToProps, {onLogin})(Login);

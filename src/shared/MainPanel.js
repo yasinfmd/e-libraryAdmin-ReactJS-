@@ -21,7 +21,7 @@ class MainPanel extends  Component{
 
                             Satılan Kitaplar
                             </NavLink>
-                            <NavLink to="/KitapAl" className="btn btn-secondary btn-round ">
+                            <NavLink to="/KitapListesi" className="btn btn-secondary btn-round ">
                              Kitap Listesi
                             </NavLink>
                         </div>

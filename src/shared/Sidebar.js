@@ -1,48 +1,42 @@
 import  React,{Component} from  'react'
 import SidebarMenu from '../components/SidebarMenu/SidebarMenu'
+import {Login} from "../router/Login";
+import {Dashboard} from "../router/Dashboard";
+import {BookList, EditBook, SoldBooks, SoldBooksDetail} from "../router/Books";
 class Sidebar extends  Component{
 
     constructor(props) {
         super(props);
-
-        //selector
-        // id
-        //title
-        //icon  fas fa-table
-        //submenu
-        //
-        //selectorid
-        //to
-
-        //name
-
         this.state={
-            menuData:[
+            routes:[
                 {
-                    selector:"#test",
-                    selectorid:"test",
-                    title:"Test -1 ",
+                    selector:"#dashboard",
+                    selectorid:"dashboard",
+                    title:"Anasayfa",
+                    clases:"nav-item active",
+                    icon:"fas fa-bars",
+                    to:"/Anasayfa",
+                    submenu:[]
+                },
+                {
+                    clases:"nav-item active",
+                    selector:"#books",
+                    selectorid:"books",
+                    title:"Kitaplar ",
                     icon:"fas fa-bars",
                     submenu:[
                         {
-                            to:"/Deneme",
-                            name:"Alt Menu"
+                            to:"/SatilanKitaplar",
+                            name:"Satılan Kitaplar"
                         },
                         {
-                            to:"/Deneme2",
-                            name:"Alt Menu2"
+                            to:"/KitapListesi",
+                            name:"Kitap Listesi"
                         }
-                    ]
-                },
-                {
-                    selector:"#alt",
-                    selectorid:"alt",
-                    title:"Test -2 Alt Menusuz ",
-                    icon:"fas fa-bars",
-                    submenu:[],
+                    ],
                     to:"/ABC"
                 },
-            ]
+            ],
         }
     }
     render(){
@@ -51,7 +45,7 @@ class Sidebar extends  Component{
                 <div className="sidebar-wrapper scrollbar scrollbar-inner">
                     <div className="sidebar-content">
 
-                        <SidebarMenu menuData={this.state.menuData} />
+                        <SidebarMenu menuData={this.state.routes} />
 
 
                     </div>

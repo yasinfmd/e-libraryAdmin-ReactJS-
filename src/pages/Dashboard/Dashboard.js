@@ -5,45 +5,127 @@ import Sidebar from "../../shared/Sidebar";
 import MainPanel from "../../shared/MainPanel";
 import Footer from "../../shared/Footer";
 import {connect} from "react-redux";
-import {isLogin} from '../../actions'
+import {isLogin,getIstatistic} from '../../actions'
 import history from '../../history/history'
 import Plugin from '../../Plugins/Component'
+import ButtonGroup from "../../components/ButonGroup/ButonGroup";
+import PageHeader from "../../shared/PageHeader";
+import TableHeader from "../../components/TableHeader/TableHeader";
+import TableBody from "../../components/TableBody/TableBody";
+import Spinner from "../../components/Spinner/Spinner";
+import Error from "../../components/Error/Error";
 class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             Token: "",
-            islogin: false
+            istatisticsData:[],
+            dataLoad:false,
+            islogin: false,
+
+        }
+        console.log(props)
+        this.getIstatistic=this.getIstatistic.bind(this)
+    }
+    getIstatistic(token){
+        debugger
+        this.setState({
+            dataLoad:false
+        })
+        /*
+        *       {
+                    subicon:"flaticon-coins text-success",
+                    icon: "icon-big text-center icon-primary bubble-shadow-small",
+                    title:"Satışlar 2",
+                    info:"5863"
+                }
+        * */
+this.props.getIstatistic(token);
+    }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.istatistic.err===false){
+            let arr=[{
+                subicon:"flaticon-credit-card text-success",
+                icon: "icon-big text-center icon-warning bubble-shadow-small",
+                title:"Satılan Kitaplar",
+                info:nextProps.istatistic.istatistics.sales["COUNT(id)"]
+            },
+
+                {
+                    subicon:"flaticon-pen text-success",
+                    icon: "icon-big text-center icon-secondary bubble-shadow-small",
+                    title:"Yazarlar",
+                    info:nextProps.istatistic.istatistics.authors["COUNT(authorsid)"]
+                },
+
+                {
+                    subicon:"flaticon-users text-success",
+                    icon: "icon-big text-center icon-info bubble-shadow-small",
+                    title:"Kullanıcılar",
+                    info:nextProps.istatistic.istatistics.users["COUNT(userid)"]
+                },
+                {
+                    subicon:"flaticon-coins text-success",
+                    icon: "icon-big text-center icon-success bubble-shadow-small",
+                    title:"Toplam Kazanç",
+                    info:nextProps.istatistic.istatistics.totalprice.toFixed(2)+ " "+" TL"
+                }
+            ]
+            this.setState({
+                dataLoad:true,
+                istatisticsData:arr
+            })
+        }else{
+            this.setState({
+                dataLoad:true,
+                istatisticsData:[]
+            })
         }
     }
-
-    componentDidMount() {
+    componentWillMount() {
+        debugger
         if(localStorage.getItem("idtoken")!=null && localStorage.getItem("idtoken")!=""){
             const response=  this.props.isLogin(localStorage.getItem("idtoken"))
-                if(response.payload.token !=null && response.payload.token && response.payload.islogin!==false){
-                    this.setState({
-                        Token: response.payload.token,
-                        islogin: response.payload.islogin
-                    })
-                }else{
-                    history.push("/")
-                }
+            if(response.payload.token !=null && response.payload.token && response.payload.islogin!==false){
+                this.getIstatistic(response.payload.token)
+                this.setState({
+                    Token: response.payload.token,
+                    islogin: response.payload.islogin
+                })
+
+            }else{
+                history.push("/")
+            }
         }else{
             history.push("/")
         }
     }
-
     render() {
+        let istatistics;
+        if(this.state.dataLoad && this.props.istatistic.err===false){
+            istatistics=
+                <IstatisticsCards title={"İstatistikler"} cardData={this.state.istatisticsData} />
+        }
+        else if(this.state.dataLoad===false) {
+            istatistics=<Spinner/>
+        }
+        else if(this.state.dataLoad===true && this.props.istatistic.err==401){
+            history.push("/");
+        }
+        else if(this.state.dataLoad===true && this.props.istatistic.err==500){
+
+            istatistics=<Error/>
+        }
         return (
             <Fragment>
-
                 <Header/>
                 <Sidebar/>
                 <div className="main-panel">
                     <div className="content">
                         <MainPanel/>
                         <div className="page-inner">
-                            <IstatisticsCards title={"Satışlar"}/>
+
+                            {istatistics}
 
                             <div className="row">
                                 <div className="col-md-4">
@@ -1025,7 +1107,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     debugger
     return {
-        loginData: state,
+        loginData: state.Login,
+        istatistic:state.Istatistic
     }
 }
-export default connect(mapStateToProps, {isLogin})(Dashboard)
+export default connect(mapStateToProps, {isLogin,getIstatistic})(Dashboard)

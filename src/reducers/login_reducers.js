@@ -17,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 token: null,
                 islogin: false,
-                err:action.payload.status
+                err:action.payload
 
             }
     } else if (action.type === "LOGGED") {

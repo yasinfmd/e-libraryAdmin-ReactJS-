@@ -9,11 +9,11 @@ class TableBody extends Component {
         return (
             <tbody>
                 {
-                 this.props.tableRow.map((x)=>
-                    <tr>
+                 this.props.tableRow.map((x,i)=>
+                    <tr key={i}>
                         {
-                            this.props.tableColumn.map((j)=>
-                            <td>{x[j.title]}</td>
+                            this.props.tableColumn.map((j,z)=>
+                            <td key={z}>{x[j.col]}</td>
                             )
                         }
                     </tr>

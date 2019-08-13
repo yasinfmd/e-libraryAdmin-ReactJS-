@@ -9,27 +9,27 @@ class Messages extends Component{
         //username
         this.state={
             msgData:[{
-                userimg:"../assets/img/jm_denis.jpg",
+                userimg:"../../assets/img/jm_denis.jpg",
                 msg:"Naber Dude  ",
                 username:"Yasin Dalkılıç"
             },
                 {
-                    userimg:"../assets/img/jm_denis.jpg",
+                    userimg:"../../assets/img/jm_denis.jpg",
                     msg:"Naber Dude   ",
                     username:"Yasin Dalkılıç"
                 },
                 {
-                    userimg:"../assets/img/jm_denis.jpg",
+                    userimg:"../../assets/img/jm_denis.jpg",
                     msg:"Naber Dude   ",
                     username:"Yasin Dalkılıç"
                 },
                 {
-                    userimg:"../assets/img/jm_denis.jpg",
+                    userimg:"../../assets/img/jm_denis.jpg",
                     msg:"Naber Dude   ",
                     username:"Yasin Dalkılıç"
                 },
                 {
-                    userimg:"../assets/img/jm_denis.jpg",
+                    userimg:"../../assets/img/jm_denis.jpg",
                     msg:"Naber Dude   ",
                     username:"Yasin Dalkılıç"
                 }

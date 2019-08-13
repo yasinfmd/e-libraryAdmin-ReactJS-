@@ -8,7 +8,7 @@ class TableHeader extends Component {
 
     renderTitle(x, i) {
         return (
-                <th>{x.title}</th>
+                <th key={i}>{x.title}</th>
         )
     }
 

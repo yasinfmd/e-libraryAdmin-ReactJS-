@@ -1,55 +1,73 @@
 import React, {Component, Fragment, Suspense} from 'react';
-import {Router,Route} from 'react-router-dom'
-import history from './history/history'
-import Dashboard from "./pages/Dashboard/Dashboard";
-import SoldBooks from './pages/SoldBooks/SoldBooks'
-import Login from './pages/Login/Login'
-
+import {Router,BrowserRouter,Route,Switch} from 'react-router-dom'
+import {Dashboard,SoldBooks,SoldBooksDetail,Login,NotFound,BookList,EditBook,AuthorsList,AuthorsDetail} from './router/router'
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            routes:[
+                {
+                    path:"/",
+                    component:Login,
+                    exact:true
+                },
+                {
+                    path:"/Anasayfa",
+                    component:Dashboard,
+                    exact:true
+                },
+                {
+                    path:"/SatilanKitaplar",
+                    component:SoldBooks,
+                    exact:true
+                },
+                {
+                    path:"/SatisDetay/:Id",
+                    component:SoldBooksDetail,
+                    exact:true
+                },
+                {
+                    path:"/KitapListesi",
+                    component:BookList,
+                    exact:true
+                },
+                {
+                    path:"/KitapDuzenle/:bookid",
+                    component:EditBook,
+                    exact:true
+                },
+                {
+                    path:"/Yazarlar",
+                    component:AuthorsList,
+                    exact:true
+                },
+                {
+                    path:"/YazarBilgisi/:authorsid",
+                    component:AuthorsDetail,
+                    exact:true
+                },
 
+            ]
+        }
     }
-
-
-
     render() {
         return (
         <Fragment>
-            <Router history={history}>
+            <BrowserRouter>
                   <div className="wrapper">
-                    <Route path="/" exact  component={Login}></Route>
-                    <Route path="/Anasayfa" exact  component={Dashboard}></Route>
-                      <Route path="/SatilanKitaplar" exact  component={SoldBooks}></Route>
+                      <Switch>
+                          {
+                              this.state.routes.map((x)=>
+                                  <Route path={x.path?x.path:null} exact={x.exact?x.exact:null} component={x.component}
+                                  ></Route>
+                              )
+                          }
+                      </Switch>
                 </div>
-            </Router>
+            </BrowserRouter>
         </Fragment>
-            /*
-            *
-            *
-            * */
-        /*    <BrowserRouter>
-
-                {
-                    this.state.islogin ? (<div className="wrapper">
-                        <Header/>
-                        <Sidebar/>
-                        <div className="main-panel">
-                            <div className="content">
-                                <MainPanel/>
-                                <Route path="/Dashboard" exact  component={Dashboard}></Route>
-                            </div>
-                            <Footer/>
-
-                        </div>
-                    </div>) : <Login/>
-                }
-            </BrowserRouter>*/
         )
-
     }
-
-
 }
 
 export  default  App

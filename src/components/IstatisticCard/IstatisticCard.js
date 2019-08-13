@@ -1,4 +1,6 @@
 import React, {Component,Fragment} from 'react'
+import propsType from "prop-types";
+import ButonGroup from "../ButonGroup/ButonGroup";
 
 class IstatisticCard extends Component {
     constructor(props) {
@@ -7,9 +9,8 @@ class IstatisticCard extends Component {
     }
 
     renderIstatisticCard(item, index) {
-
         return (
-            <div className="col-sm-6 col-md-3">
+            <div className="col-sm-6 col-md-3" key={index}>
                 <div className="card card-stats card-round">
             <div className="card-body ">
                 <div className="row align-items-center">
@@ -28,7 +29,6 @@ class IstatisticCard extends Component {
             </div>
                 </div>
             </div>
-
         )
     }
 
@@ -46,7 +46,9 @@ class IstatisticCard extends Component {
         )
     }
 }
-
+IstatisticCard.propTypes = {
+    IstatisticCardData:propsType.array
+};
 
 export default IstatisticCard
 
