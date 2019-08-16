@@ -46,7 +46,7 @@ class SidebarMenu extends Component{
                     <div key={i}>
                         <ul className="nav nav-primary" >
                         <li className={item.clases}    >
-                            <NavLink to={item.to} exact data-toggle="collapse" href={item.to}>
+                            <NavLink to={item.to} exact  href={item.to}>
                                 <i className={item.icon}></i>
                                 <p>{item.title}</p>
                             </NavLink>

@@ -6,7 +6,6 @@ import MainPanel from "../../shared/MainPanel";
 import Footer from "../../shared/Footer";
 import {connect} from "react-redux";
 import {isLogin,getIstatistic} from '../../actions'
-import history from '../../history/history'
 import Plugin from '../../Plugins/Component'
 import ButtonGroup from "../../components/ButonGroup/ButonGroup";
 import PageHeader from "../../shared/PageHeader";
@@ -94,10 +93,10 @@ this.props.getIstatistic(token);
                 })
 
             }else{
-                history.push("/")
+                this.props.history.replace("/")
             }
         }else{
-            history.push("/")
+            this.props.history.replace("/")
         }
     }
     render() {
@@ -110,7 +109,7 @@ this.props.getIstatistic(token);
             istatistics=<Spinner/>
         }
         else if(this.state.dataLoad===true && this.props.istatistic.err==401){
-            history.push("/");
+            this.props.history.replace("/")
         }
         else if(this.state.dataLoad===true && this.props.istatistic.err==500){
 

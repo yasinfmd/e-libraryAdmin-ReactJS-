@@ -1,8 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import Header from "../../shared/Header";
-import Sidebar from "../../shared/Sidebar";
-import MainPanel from "../../shared/MainPanel";
-import Footer from "../../shared/Footer";
 import {connect} from "react-redux";
 import history from '../../history/history'
 import PageHeader from '../../shared/PageHeader'
@@ -16,6 +12,7 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import Plugin from '../../Plugins/Component'
 import  Error from '../../components/Error/Error'
 import "react-datepicker/dist/react-datepicker.css";
+import Container from "../Container/Container";
 
 class SoldBooks extends Component {
     constructor(props) {
@@ -52,7 +49,6 @@ class SoldBooks extends Component {
         });
     }
     goDetail(item){
-        debugger
         this.props.history.push('/SatisDetay/'+item.id);
     }
     getBooksFilter(){
@@ -252,18 +248,10 @@ class SoldBooks extends Component {
             soldbook=<Error/>
         }
         return (
-            <Fragment>
-                <Header/>
-                <Sidebar/>
-                <div className="main-panel">
-                    <div className="content">
-                        <MainPanel/>
+                <Container>
                         {soldbook}
-                    </div>
-                    <Footer/>
-                </div>
-            </Fragment>
-        )
+                </Container>
+                        )
     }
 
 }

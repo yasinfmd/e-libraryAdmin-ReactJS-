@@ -46,8 +46,7 @@ export const isLogin = (token) => {
 }
 
 export const Quit = () => {
-    localStorage.removeItem('idtoken');
-    localStorage.removeItem('mail');
+    localStorage.clear()
     return {
         type: "EXİT"
     }

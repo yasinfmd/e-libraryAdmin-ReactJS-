@@ -3,6 +3,7 @@ import SidebarMenu from '../components/SidebarMenu/SidebarMenu'
 import {Login} from "../router/Login";
 import {Dashboard} from "../router/Dashboard";
 import {BookList, EditBook, SoldBooks, SoldBooksDetail} from "../router/Books";
+import {AuthorsList} from "../router/Authors";
 class Sidebar extends  Component{
 
     constructor(props) {
@@ -17,6 +18,13 @@ class Sidebar extends  Component{
                     icon:"fas fa-bars",
                     to:"/Anasayfa",
                     submenu:[]
+                },
+                {
+                  clases:"nav-item active",
+                    title:"Yazarlar",
+                    icon:"fas fa-bars",
+                    submenu:[],
+                    to:"/Yazarlar"
                 },
                 {
                     clases:"nav-item active",
@@ -34,7 +42,7 @@ class Sidebar extends  Component{
                             name:"Kitap Listesi"
                         }
                     ],
-                    to:"/ABC"
+
                 },
             ],
         }

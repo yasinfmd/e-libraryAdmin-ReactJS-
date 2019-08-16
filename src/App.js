@@ -1,6 +1,6 @@
 import React, {Component, Fragment, Suspense} from 'react';
 import {Router,BrowserRouter,Route,Switch} from 'react-router-dom'
-import {Dashboard,SoldBooks,SoldBooksDetail,Login,NotFound,BookList,EditBook,AuthorsList,AuthorsDetail} from './router/router'
+import {Dashboard,SoldBooks,SoldBooksDetail,Login,NotFound,BookList,EditBook,AuthorsList,AuthorsDetail,AddAuthors} from './router/router'
 class App extends Component {
     constructor(props) {
         super(props);
@@ -46,6 +46,11 @@ class App extends Component {
                     component:AuthorsDetail,
                     exact:true
                 },
+                {
+                    path:"/YazarEkle",
+                    component:AddAuthors,
+                    exact:true
+                }
 
             ]
         }

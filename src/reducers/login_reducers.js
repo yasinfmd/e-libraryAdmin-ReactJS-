@@ -3,7 +3,6 @@ const INITIAL_STATE = {
     token: "",
     err:""
 }
-
 export default (state = INITIAL_STATE, action) => {
     debugger
     if (action.type === "onLogin") {
@@ -28,10 +27,6 @@ export default (state = INITIAL_STATE, action) => {
         }
     } else if (action.type === "EXİT") {
         return INITIAL_STATE
-    } else if (action.type === "Test") {
-        debugger
-        return action.payload
-        debugger
     }
     return state
 }

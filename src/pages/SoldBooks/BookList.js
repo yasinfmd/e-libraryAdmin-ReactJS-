@@ -1,8 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import Header from "../../shared/Header";
-import Sidebar from "../../shared/Sidebar";
-import MainPanel from "../../shared/MainPanel";
-import Footer from "../../shared/Footer";
 import {connect} from "react-redux";
 import PageHeader from '../../shared/PageHeader'
 import {isLogin, getAllBooks} from "../../actions";
@@ -13,6 +9,7 @@ import Spinner from '../../components/Spinner/Spinner'
 import Modal from '../../components/Modal/Modal'
 import _ from  'underscore'
 import Error from '../../components/Error/Error'
+import Container from "../Container/Container";
 
 class BookList extends Component {
     constructor(props) {
@@ -197,19 +194,10 @@ class BookList extends Component {
         }
 
         return (
-            <Fragment>
-                <Header/>
-                <Sidebar/>
-
-                <div className="main-panel">
-                    <div className="content">
-                        <MainPanel/>
-                        <Modal title={this.state.selectedBook.bookname+ " "+  "Yazar Bilgileri"}  content={this.state.selectedBook.authorsInfo} />
-                        {book}
-                    </div>
-                    <Footer/>
-                </div>
-            </Fragment>
+            <Container>
+                <Modal title={this.state.selectedBook.bookname+ " "+  "Yazar Bilgileri"}  content={this.state.selectedBook.authorsInfo} />
+                {book}
+            </Container>
         )
     }
 

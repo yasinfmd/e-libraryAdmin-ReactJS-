@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Plugin from '../../Plugins/Component'
-import history from '../../history/history'
+import {Quit} from '../../actions'
+import {connect} from "react-redux";
 
 class HeaderProfile extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class HeaderProfile extends Component {
         this.state = {
             user: "",
         }
-
+        this.exit = this.exit.bind(this)
     }
 
     componentDidMount() {
@@ -17,9 +18,12 @@ class HeaderProfile extends Component {
             this.setState({
                 user: token
             })
-        } else {
-            history.push("/")
         }
+    }
+
+    exit() {
+        this.props.history.replace("/")
+        this.props.Quit();
     }
 
     render() {
@@ -40,7 +44,7 @@ class HeaderProfile extends Component {
                                                                 alt="image profile"
                                                                 className="avatar-img rounded"/></div>
                                 <div className="u-text">
-                                    <h4>{this.state.user.username}  {this.state.user.userlastname}</h4>
+                                    <h4>{this.state.user.username} {this.state.user.userlastname}</h4>
                                     <p className="text-muted">{this.state.user.mail}</p><a
                                     href="profile.html" className="btn btn-xs btn-secondary btn-sm">View
                                     Profile</a>
@@ -55,7 +59,7 @@ class HeaderProfile extends Component {
                             <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="#">Hesap Ayarları</a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">Çıkış Yap</a>
+                            <a className="dropdown-item" onClick={() => this.exit()}>Çıkış Yap</a>
                         </li>
                     </div>
                 </ul>
@@ -66,4 +70,4 @@ class HeaderProfile extends Component {
 
 }
 
-export default HeaderProfile
+export default  connect(null,{Quit})(HeaderProfile)
