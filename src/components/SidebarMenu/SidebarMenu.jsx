@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {NavLink} from "react-router-dom";
-
+import propsType from 'prop-types'
 
 class SidebarMenu extends Component{
     constructor(props) {
@@ -18,7 +18,7 @@ class SidebarMenu extends Component{
                                 <p>{item.title}</p>
                                 <span className="caret"></span>
                             </a>
-                            <div className="collapse show" id={item.selectorid}>
+                            <div className="collapse " id={item.selectorid}>
                                 {
                                     item.submenu.map((x,index)=>{
                                         return (
@@ -71,5 +71,8 @@ class SidebarMenu extends Component{
         )
     }
 
+}
+SidebarMenu.propTypes={
+    menuData:propsType.array
 }
 export  default  SidebarMenu

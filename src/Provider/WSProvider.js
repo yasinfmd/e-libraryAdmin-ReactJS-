@@ -1,7 +1,7 @@
 var WSProvider = {
-    ajaxPost: function(serviceName, jsonParams) {
-        debugger
 
+    ajaxPost: function(serviceName, jsonParams) {
+    debugger
         var deferred = new Promise(function(resolve, reject) {
             // eslint-disable-next-line no-undef
             return $.ajax({

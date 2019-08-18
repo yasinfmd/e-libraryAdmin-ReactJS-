@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import Container from "../Container/Container";
 import PageHeader from "../../shared/PageHeader";
 import Input from "../../components/Input/Input";
@@ -114,9 +114,9 @@ class AddAuthors extends Component {
         }
     }
 componentWillReceiveProps(nextProps, nextContext) {
-        if(nextProps.authorsData.err===false && nextProps.authorsData.newAuthor.length>0){
+        if(nextProps.authorsData.err===false && nextProps.authorsData.newAuthor && nextProps.authorsData.newAuthor.length>0){
             Plugin.showalert("Kayıt İşlemi Başarılı","success","Tamam")
-        }else if(nextProps.authorsData.err===false && nextProps.authorsData.newAuthor.length<0){
+        }else if(nextProps.authorsData.err===false   && nextProps.authorsData.newAuthor  && nextProps.authorsData.newAuthor.length<0){
             Plugin.showalert("Kayıt İşlemi Sırasında Bir Hata Gerçekleşti","error","Tamam")
         } else if (nextProps.authorsData.err == 401) {
             this.props.Quit()

@@ -1,5 +1,6 @@
 import  React from  'react'
 import {NavLink} from "react-router-dom";
+import propsType from 'prop-types'
 import NavToggle from '../NavToggle/NavToggle'
 const Logo = (props) =>(
     <div className="logo-header" data-background-color="blue">
@@ -14,4 +15,7 @@ const Logo = (props) =>(
     </div>
 
 )
+NavToggle.propTypes={
+    logo:propsType.string
+}
 export  default  Logo

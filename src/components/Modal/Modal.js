@@ -1,5 +1,5 @@
 import  React,{Component} from  'react'
-
+import propsType from 'prop-types'
 
 class Modal extends  Component{
     constructor(props) {
@@ -40,5 +40,7 @@ class Modal extends  Component{
     }
 }
 
-
+Modal.propTypes={
+    content:propsType.array
+}
 export  default  Modal

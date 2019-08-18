@@ -1,4 +1,4 @@
-import  React,{Component,Fragment} from  "react"
+import  React,{Component} from  "react"
 import propsType from 'prop-types'
 class CustomCard extends Component{
     constructor(props) {
@@ -64,15 +64,6 @@ class CustomCard extends Component{
 
 }
 CustomCard.propTypes = {
-    /// titleImg
-    //subImg
-    //name -lastname
-    //age
-    //country
-
-    /*
-    *
-    * */
     authorsInfo:propsType.array,
     titleImg:propsType.string,
     subImg:propsType.string,

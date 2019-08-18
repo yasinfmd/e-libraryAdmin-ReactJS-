@@ -1,4 +1,3 @@
-import Component from './Component'
 var Validation = {
 
     checkvalidate:function(data,rules,ruleslength,rulesdata){

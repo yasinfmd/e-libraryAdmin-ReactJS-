@@ -5,7 +5,7 @@ import Sidebar from "../../shared/Sidebar";
 import MainPanel from "../../shared/MainPanel";
 import Footer from "../../shared/Footer";
 import {connect} from "react-redux";
-import {isLogin,getIstatistic} from '../../actions'
+import {isLogin,getIstatistic,Quit} from '../../actions'
 import Plugin from '../../Plugins/Component'
 import ButtonGroup from "../../components/ButonGroup/ButonGroup";
 import PageHeader from "../../shared/PageHeader";
@@ -109,6 +109,7 @@ this.props.getIstatistic(token);
             istatistics=<Spinner/>
         }
         else if(this.state.dataLoad===true && this.props.istatistic.err==401){
+            this.props.Quit()
             this.props.history.replace("/")
         }
         else if(this.state.dataLoad===true && this.props.istatistic.err==500){
@@ -123,9 +124,7 @@ this.props.getIstatistic(token);
                     <div className="content">
                         <MainPanel/>
                         <div className="page-inner">
-
                             {istatistics}
-
                             <div className="row">
                                 <div className="col-md-4">
                                     <div className="card card-secondary">
@@ -1110,4 +1109,4 @@ const mapStateToProps = (state) => {
         istatistic:state.Istatistic
     }
 }
-export default connect(mapStateToProps, {isLogin,getIstatistic})(Dashboard)
+export default connect(mapStateToProps, {isLogin,getIstatistic,Quit})(Dashboard)

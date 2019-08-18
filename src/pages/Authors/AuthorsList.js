@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import Container from "../Container/Container";
 import {connect} from "react-redux";
 import {getAuthors, isLogin,Quit} from '../../actions'
@@ -19,12 +19,16 @@ class AuthorsList extends Component {
             tableTitle: [],
         }
         this.goDetail=this.goDetail.bind(this)
+        this.routeNewAuthor=this.routeNewAuthor.bind(this)
     }
 
     getAuthors(token) {
         this.props.getAuthors(token)
     }
 
+    routeNewAuthor(){
+        this.props.history.push("/YazarEkle");
+    }
     componentDidMount() {
         if (localStorage.getItem("idtoken") != null && localStorage.getItem("idtoken") != "") {
             const response = this.props.isLogin(localStorage.getItem("idtoken"))
@@ -58,7 +62,7 @@ class AuthorsList extends Component {
                                     <div className="card-sub">
                                         Sistemde Kayıtlı Olan Yazar Listesi Burada Yer Alır
                                     </div>
-                                     <button className={"btn btn-sm btn-success"} style={{float:"right"}}>Yeni Yazar Ekle</button>
+                                     <button onClick={this.routeNewAuthor} className={"btn btn-sm btn-success"} style={{float:"right"}}>Yeni Yazar Ekle</button>
                                     <div className="table-responsive">
                                         <table
                                             className="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">

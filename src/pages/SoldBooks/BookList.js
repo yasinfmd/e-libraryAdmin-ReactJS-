@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {connect} from "react-redux";
 import PageHeader from '../../shared/PageHeader'
 import {isLogin, getAllBooks} from "../../actions";
@@ -21,12 +21,15 @@ class BookList extends Component {
             selectedBook:[]
         }
         this.setActiveBook=this.setActiveBook.bind(this)
+        this.goEdit=this.goEdit.bind(this)
+    }
+    goEdit(item){
+        this.props.history.push("/KitapDuzenle/"+item.bookid)
     }
     setActiveBook(item){
             this.setState({
                 selectedBook:item
             })
-        console.log(item.authorsInfo)
     }
     componentWillReceiveProps(nextProps, nextContext) {
         if (nextProps.allBooks.err === false) {
@@ -49,7 +52,8 @@ class BookList extends Component {
                                                deleteBtnIcon={"fas fa-trash-alt"}
                                                deleteBtnToolTip={"Bu Kitabı Sil"}
                                                saveVisible={"none"}
-                                               editBtnToolTip={"Düzenle"}
+                                               editBtnToolTip={"Düzenle2"}
+                                               editBtnClck={()=>this.goEdit( groupedData[keys[i]][0])}
                                                editBtnIcon={"fas fa-edit"}
                                                editVisible=""
                                                infoBtnIcon={"fa fa-eye"}
@@ -124,8 +128,7 @@ class BookList extends Component {
             this.props.history.push("/")
         }
     }
-
-    render() {
+    renderBookList(){
         let book;
         if (this.state.dataLoad && this.props.allBooks.err === false) {
             book =
@@ -192,11 +195,15 @@ class BookList extends Component {
         else if(this.state.dataLoad===true && this.props.allBooks.err==500){
             book=<Error/>
         }
+        return book
+    }
+    render() {
+
 
         return (
             <Container>
                 <Modal title={this.state.selectedBook.bookname+ " "+  "Yazar Bilgileri"}  content={this.state.selectedBook.authorsInfo} />
-                {book}
+                {this.renderBookList()}
             </Container>
         )
     }

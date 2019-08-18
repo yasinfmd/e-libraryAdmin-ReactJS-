@@ -10,6 +10,14 @@ export default (state = INITIAL_STATE, action) => {
             err:false
         }
     }
+    else if(action.type==="updatebook"){
+        debugger
+        return {
+            allBookList:action.payload,
+            updatedBook:action.payload,
+            err: false
+        }
+    }
     else if (action.type === "allBookErr") {
         return {
             allBookList: [],

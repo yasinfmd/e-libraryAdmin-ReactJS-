@@ -65,3 +65,40 @@ export  const getBookDetail=(token,param)=>{
 }
 
 
+export  const setBook=(token,param,updatedata,data,id)=>{
+    debugger
+    return async (dispatch) => {
+        debugger
+        await WSProvider.ajaxPost("",{SN:"Books",MN:"setBooks",param,
+            updatedData:updatedata,
+            authorsData:data,
+            bookid:id,
+            token}).then((res) => {
+            if(res && res.status==200){
+                dispatch(
+                    {
+                        type: "updatebook",
+                        payload: res.data
+                    }
+                )
+            }else{
+                if(res!==""){
+                    dispatch(
+                        {
+                            type: "allBookErr",
+                            payload: res.status
+                        }
+                    )
+                }else{
+                    dispatch(
+                        {
+                            type: "allBookErr",
+                            payload: "500"
+                        }
+                    )
+                }
+
+            }
+        })
+    }
+}

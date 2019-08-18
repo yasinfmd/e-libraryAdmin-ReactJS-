@@ -29,8 +29,8 @@ export default (state = INITIAL_STATE, action) => {
     }
     else if (action.type === "authorsErr") {
         return {
-            authorsList: [],
-            authorsBook: [],
+            authorsList: state.authorsList,
+            authorsBook: state.authorsBook,
             err: action.payload
         }
     }

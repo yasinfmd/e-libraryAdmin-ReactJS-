@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {NavLink} from "react-router-dom";
 import propsType from "prop-types";
-import TableHeader from "../TableHeader/TableHeader";
+
 
 class Notification extends Component {
     constructor(props) {

@@ -3,6 +3,7 @@ import LoginReducers from './login_reducers'
 import  SoldBooksReducers from './soldbook_reducers'
 import  IstatisticReducers from './istatistic_reducers'
 import BooksReducers from './book_reducers'
+import  UserReducers from  './user_reducers'
 import AuthorsReducers from  './authors_reducers'
 debugger
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     Login:LoginReducers,
     Books:SoldBooksReducers,
     ABooks:BooksReducers,
-    Authors:AuthorsReducers
+    Authors:AuthorsReducers,
+    User:UserReducers
 })

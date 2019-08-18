@@ -16,7 +16,9 @@ class ButonGroup extends Component{
                     <i className={this.props.deleteBtnIcon}></i>
 
                 </button>
-                <button data-toggle="tooltip" data-placement="top" title={this.props.editBtnToolTip} className="btn btn-warning btn-sm" style={{margin:"10px",display:this.props.editVisible}}>
+                <button data-toggle="tooltip"
+                        onClick={this.props.editBtnClck}
+                        data-placement="top" title={this.props.editBtnToolTip} className="btn btn-warning btn-sm" style={{margin:"10px",display:this.props.editVisible}}>
                     <i className={this.props.editBtnIcon}></i>
                     </button>
                 <button data-toggle="tooltip" data-placement="top" title={this.props.infoBtnToolTip}

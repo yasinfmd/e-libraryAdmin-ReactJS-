@@ -14,20 +14,33 @@ class Sidebar extends  Component{
                     selector:"#dashboard",
                     selectorid:"dashboard",
                     title:"Anasayfa",
-                    clases:"nav-item active",
+                    clases:"nav-item ",
                     icon:"fas fa-bars",
                     to:"/Anasayfa",
                     submenu:[]
                 },
                 {
-                  clases:"nav-item active",
+                  clases:"nav-item ",
                     title:"Yazarlar",
                     icon:"fas fa-bars",
                     submenu:[],
                     to:"/Yazarlar"
                 },
                 {
-                    clases:"nav-item active",
+                    clases:"nav-item ",
+                    selector:"#users",
+                    selectorid:"users",
+                    title:"Kullanıcılar",
+                    icon:"fas fa-bars",
+                    submenu:[
+                        {
+                            to:"/Kullanıcılar",
+                            name:"Kullanıcı Listesi"
+                        },
+                    ],
+                },
+                {
+                    clases:"nav-item",
                     selector:"#books",
                     selectorid:"books",
                     title:"Kitaplar ",
